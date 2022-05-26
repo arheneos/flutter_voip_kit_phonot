@@ -32,7 +32,7 @@ class CallController : NSObject {
 
     override init() {
         let url = Bundle(for: SwiftFlutterVoipKitPlugin.self).url(forResource: "bell", withExtension: "caf")
-        print(self.config.ringtoneSound ?? "NULL")
+        print(url ?? "NULL")
         provider = CXProvider(configuration: CallController.providerConfiguration)
         provider.configuration.ringtoneSound = url?.path
         print("HIGHER VERSION2")
