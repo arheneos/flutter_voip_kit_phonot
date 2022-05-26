@@ -29,13 +29,19 @@ class CallController : NSObject {
     private let provider : CXProvider
     var actionListener : ((CallEvent, UUID, Any?)->Void)?
     private let callController = CXCallController()
-    
+    let config: CXProviderConfiguration
+
     override init() {
+
         let url = Bundle(for: type(of: self)).url(forResource: "bell", withExtension: "caf")
-        provider = CXProvider(configuration: CallController.providerConfiguration)
+        self.config = CXProviderConfiguration()
+        self.config.ringtoneSound = "bell.caf"
+        self.config.ringtoneSound = url?.path
+        print(self.config.ringtoneSound ?? "NULL")
+        self.config.supportsVideo = false
+        self.config.includesCallsInRecents = false
+        provider = CXProvider(configuration: self.config)
         print("HIGHER VERSION")
-        provider.ringtoneSound = url?.path
-        print(provider.ringtoneSound ?? "NULL")
         super.init()
         provider.setDelegate(self, queue: nil)
     }
