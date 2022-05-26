@@ -31,3 +31,5 @@ flutter:
         pluginClass: FlutterVoipKitPlugin
       ios:
         pluginClass: FlutterVoipKitPlugin
+  assets:
+    - assets/
