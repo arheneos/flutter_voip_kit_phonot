@@ -47,7 +47,7 @@ class CallController : NSObject {
         }
         print("bell.caf!")
         providerConfiguration.supportsVideo = false
-        providerConfiguration.ringtoneSound = "/assets/bell.caf"
+        providerConfiguration.ringtoneSound = "bell.caf"
         providerConfiguration.includesCallsInRecents = false
         providerConfiguration.supportedHandleTypes = [.phoneNumber]
         
