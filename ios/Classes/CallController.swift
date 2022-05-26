@@ -49,6 +49,8 @@ class CallController : NSObject {
         guard let url = Bundle(for: type(of: self)).url(forResource: "bell", withExtension: "caf") else {
            return print("File not found")
         }
+        print("-------")
+        print(url.path)
 
         providerConfiguration.supportsVideo = false
         providerConfiguration.ringtoneSound = url.path
