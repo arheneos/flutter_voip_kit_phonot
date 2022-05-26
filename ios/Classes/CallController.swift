@@ -46,8 +46,9 @@ class CallController : NSObject {
             providerConfiguration = CXProviderConfiguration(localizedName: "Flutter Voip Kit") //TODO:
         }
         
-        providerConfiguration.supportsVideo = true
-        providerConfiguration.maximumCallsPerCallGroup = 1
+        providerConfiguration.supportsVideo = false
+        providerConfiguration.ringtoneSound = "bell.caf"
+        providerConfiguration.includesCallsInRecents = false
         providerConfiguration.supportedHandleTypes = [.phoneNumber]
         
         return providerConfiguration
