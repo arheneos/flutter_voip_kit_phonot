@@ -45,9 +45,9 @@ class CallController : NSObject {
         } else {
             providerConfiguration = CXProviderConfiguration(localizedName: "Flutter Voip Kit") //TODO:
         }
-        
+        print("bell.caf!")
         providerConfiguration.supportsVideo = false
-        providerConfiguration.ringtoneSound = "bell.caf"
+        providerConfiguration.ringtoneSound = "/assets/bell.caf"
         providerConfiguration.includesCallsInRecents = false
         providerConfiguration.supportedHandleTypes = [.phoneNumber]
         
