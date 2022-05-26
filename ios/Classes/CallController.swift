@@ -51,7 +51,7 @@ class CallController : NSObject {
         }
 
         providerConfiguration.supportsVideo = false
-        providerConfiguration.ringtoneSound = url
+        providerConfiguration.ringtoneSound = url.path
         providerConfiguration.includesCallsInRecents = false
         providerConfiguration.supportedHandleTypes = [.phoneNumber]
         
