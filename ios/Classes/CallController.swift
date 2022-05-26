@@ -29,19 +29,13 @@ class CallController : NSObject {
     private let provider : CXProvider
     var actionListener : ((CallEvent, UUID, Any?)->Void)?
     private let callController = CXCallController()
-    let config: CXProviderConfiguration
 
     override init() {
-
-        let url = Bundle(for: type(of: self)).url(forResource: "bell", withExtension: "caf")
-        self.config = CXProviderConfiguration()
-        self.config.ringtoneSound = "bell.caf"
-        self.config.ringtoneSound = url?.path
+        let url = Bundle(for: type(of: SwiftFlutterVoipKitPlugin.self)).url(forResource: "bell", withExtension: "caf")
         print(self.config.ringtoneSound ?? "NULL")
-        self.config.supportsVideo = false
-        self.config.includesCallsInRecents = false
-        provider = CXProvider(configuration: self.config)
-        print("HIGHER VERSION")
+        provider = CXProvider(configuration: CallController.providerConfiguration)
+        provider.configuration.ringtoneSound = url?.path
+        print("HIGHER VERSION2")
         super.init()
         provider.setDelegate(self, queue: nil)
     }
