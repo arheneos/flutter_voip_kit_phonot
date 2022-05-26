@@ -35,7 +35,7 @@ class CallController : NSObject {
         provider = CXProvider(configuration: CallController.providerConfiguration)
         print("HIGHER VERSION")
         provider.ringtoneSound = url?.path
-        print(self.config.ringtoneSound ?? "NULL")
+        print(provider.ringtoneSound ?? "NULL")
         super.init()
         provider.setDelegate(self, queue: nil)
     }
