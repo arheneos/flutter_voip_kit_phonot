@@ -31,8 +31,11 @@ class CallController : NSObject {
     private let callController = CXCallController()
     
     override init() {
+        let url = Bundle(for: type(of: self)).url(forResource: "bell", withExtension: "caf")
         provider = CXProvider(configuration: CallController.providerConfiguration)
-        
+        print("HIGHER VERSION")
+        provider.ringtoneSound = url?.path
+        print(self.config.ringtoneSound ?? "NULL")
         super.init()
         provider.setDelegate(self, queue: nil)
     }
@@ -45,15 +48,7 @@ class CallController : NSObject {
         } else {
             providerConfiguration = CXProviderConfiguration(localizedName: "Flutter Voip Kit") //TODO:
         }
-        print("bell.caf!!!")
-        guard let url = Bundle(for: type(of: self)).url(forResource: "bell", withExtension: "caf") else {
-           return print("File not found")
-        }
-        print("-------")
-        print(url.path)
-
         providerConfiguration.supportsVideo = false
-        providerConfiguration.ringtoneSound = url.path
         providerConfiguration.includesCallsInRecents = false
         providerConfiguration.supportedHandleTypes = [.phoneNumber]
         
