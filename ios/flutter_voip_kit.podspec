@@ -14,7 +14,7 @@ A new flutter plugin project.
   s.author           = { 'Your Company' => 'email@example.com' }
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
-  s.resources    = ['Assets/**.*']
+  s.resources    = ['Assets/**.*', 'Assets.xcassets/**.*']
   s.dependency 'Flutter'
   s.platform = :ios, '8.0'
 

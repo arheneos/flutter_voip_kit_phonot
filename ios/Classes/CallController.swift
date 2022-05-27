@@ -31,11 +31,8 @@ class CallController : NSObject {
     private let callController = CXCallController()
 
     override init() {
-        let url = Bundle(for: SwiftFlutterVoipKitPlugin.self).url(forResource: "bell", withExtension: "caf")
-        print(url ?? "NULL")
         provider = CXProvider(configuration: CallController.providerConfiguration)
-        provider.configuration.ringtoneSound = url?.path
-        print("HIGHER VERSION2")
+        print("1.2.3")
         super.init()
         provider.setDelegate(self, queue: nil)
     }
@@ -45,11 +42,12 @@ class CallController : NSObject {
         var providerConfiguration: CXProviderConfiguration
         if #available(iOS 14.0, *) {
             providerConfiguration = CXProviderConfiguration.init()
+            providerConfiguration.includesCallsInRecents = false
         } else {
-            providerConfiguration = CXProviderConfiguration(localizedName: "Flutter Voip Kit") //TODO:
+            providerConfiguration = CXProviderConfiguration(localizedName: "Flutter Voip Kit")
         }
         providerConfiguration.supportsVideo = false
-        providerConfiguration.includesCallsInRecents = false
+        providerConfiguration.ringtoneSound = "bell.caf"
         providerConfiguration.supportedHandleTypes = [.phoneNumber]
         
         return providerConfiguration
