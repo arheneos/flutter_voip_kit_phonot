@@ -32,6 +32,8 @@ class CallController : NSObject {
 
     override init() {
         provider = CXProvider(configuration: CallController.providerConfiguration)
+        let url = Bundle(for: SwiftFlutterVoipKitPlugin.self).url(forResource: "bell", withExtension: "caf")
+        print(url ?? "NULL")
         print("1.2.3")
         super.init()
         provider.setDelegate(self, queue: nil)
